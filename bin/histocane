@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+
+require 'cane'
+require 'aggregate'
+
+lines = Cane::StyleCheck.new(:files => '{app,lib}/**/*.rb', :measure => 0).violations.map do |x|
+  x.message =~ /Line is >0 characters \((\d+)\)/ && Integer($1)
+end
+
+slice = Float(ARGV.shift || 10)
+max = lines.max ? (lines.max / slice).ceil * slice : slice
+
+histogram = Aggregate.new(0, max, slice)
+lines.each do |length|
+  histogram << length
+end
+puts histogram
