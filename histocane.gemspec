@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name = "histocane"
-  spec.version = "0.0.1"
+  spec.version = "0.0.2"
   spec.author = "halorgium"
   spec.email = "gemcutter@spork.in"
   spec.summary = "Simple histograms using cane"
