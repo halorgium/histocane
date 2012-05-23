@@ -3,7 +3,7 @@
 require 'cane'
 require 'aggregate'
 
-lines = Cane::StyleCheck.new(:files => '{app,lib}/**/*.rb', :measure => 0).violations.map do |x|
+lines = Cane::StyleCheck.new(:files => '**/*.rb', :measure => 0).violations.map do |x|
   x.message =~ /Line is >0 characters \((\d+)\)/ && Integer($1)
 end
 
